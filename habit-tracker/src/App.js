@@ -7,67 +7,84 @@ class App extends Component {
     this.state = {
       mockData: [
         {
-          name: 'Neil',
-          date: '05/02/2020',
+          name: 'neil',
+          date: 1590251157604,
           yes: 1,
         },
         {
-          name: 'Neil',
-          date: '05/02/2020',
+          name: 'neil',
+          date: 1590251157604,
           yes: 0,
         },
         {
-          name: 'Qi',
-          date: '05/02/2020',
+          name: 'qi',
+          date: 1590251157604,
           yes: 1,
         },
         {
-          name: 'Neil',
-          date: '05/03/2020',
+          name: 'neil',
+          date: 1590251157604,
           yes: 0,
         },
         {
-          name: 'Qi',
-          date: '05/03/2020',
+          name: 'qi',
+          date: 1590251157604,
           yes: 1,
         },
         {
-          name: 'Neil',
-          date: '05/04/2020',
+          name: 'neil',
+          date: 1590251157604,
           yes: 0,
         },
 
         {
-          name: 'Qi',
-          date: '05/04/2020',
+          name: 'qi',
+          date: 1590251157604,
           yes: 1,
         },
         {
-          name: 'Neil',
-          date: '05/04/2020',
+          name: 'neil',
+          date: 1590251157604,
           yes: 1,
         },
         {
-          name: 'Qi',
-          date: '05/04/2020',
+          name: 'qi',
+          date: 1590251157604,
           yes: 1,
         },
-      ]
+      ],
     };
   }
 
-  renderTable(name) {
-    let data =  this.state.mockData.filter(item => item.name === name);
+  componentDidMount() {
+    fetch('https://dl.dropboxusercontent.com/s/zqaupva8wk071uy/exercise.json')
+      .then((res) => res.json())
+      .then(
+        (result) => {
+          console.log(result);
+          this.setState({
+            ...this.state,
+            exercise: result,
+          });
+        },
+        (error) => {}
+      );
+  }
 
-    return data.map(info => {
-      const {date, yes} = info;
-      return(
-        <tr>
-          <td>{date}</td>
+  renderTable(name) {
+    let data = this.state.mockData.filter((item) => item.name === name);
+
+    return data.map((info, index) => {
+      const { date, yes } = info;
+
+      let formatDate = new Date(date).toLocaleDateString('en-US');
+      return (
+        <tr key={index}>
+          <td>{formatDate}</td>
           <td>{yes}</td>
         </tr>
-      ); 
-    })
+      );
+    });
   }
 
   renderTableHeader() {
@@ -76,7 +93,7 @@ class App extends Component {
         <th>Date</th>
         <th>Yes</th>
       </tr>
-    )
+    );
   }
 
   render() {
@@ -86,21 +103,21 @@ class App extends Component {
           <h2>Welcome to Qi and Neil's Habit Tracker</h2>
         </div>
         <div className="dashboard">
-          <div class="left">
-            <div class="name">Neil</div>
-            <div class="exercise-table">
+          <div className="left">
+            <div className="name">Neil</div>
+            <div className="exercise-table">
               <table>
-                {this.renderTableHeader()}
-                {this.renderTable("Neil")}
+                <thead>{this.renderTableHeader()}</thead>
+                <tbody>{this.renderTable('neil')}</tbody>
               </table>
             </div>
           </div>
-          <div class="right">
-            <div class="name">Qi</div>
-            <div class="exercise-table">
+          <div className="right">
+            <div className="name">Qi</div>
+            <div className="exercise-table">
               <table>
-                {this.renderTableHeader()}
-                {this.renderTable("Qi")}
+                <thead>{this.renderTableHeader()}</thead>
+                <tbody>{this.renderTable('qi')}</tbody>
               </table>
             </div>
           </div>
