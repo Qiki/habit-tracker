@@ -5,54 +5,55 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      mockData: [
-        {
-          name: 'neil',
-          date: 1590251157604,
-          yes: 1,
-        },
-        {
-          name: 'neil',
-          date: 1590251157604,
-          yes: 0,
-        },
-        {
-          name: 'qi',
-          date: 1590251157604,
-          yes: 1,
-        },
-        {
-          name: 'neil',
-          date: 1590251157604,
-          yes: 0,
-        },
-        {
-          name: 'qi',
-          date: 1590251157604,
-          yes: 1,
-        },
-        {
-          name: 'neil',
-          date: 1590251157604,
-          yes: 0,
-        },
+      // mockData: [
+      //   {
+      //     name: 'neil',
+      //     date: 1590251157604,
+      //     yes: 1,
+      //   },
+      //   {
+      //     name: 'neil',
+      //     date: 1590251157604,
+      //     yes: 0,
+      //   },
+      //   {
+      //     name: 'qi',
+      //     date: 1590251157604,
+      //     yes: 1,
+      //   },
+      //   {
+      //     name: 'neil',
+      //     date: 1590251157604,
+      //     yes: 0,
+      //   },
+      //   {
+      //     name: 'qi',
+      //     date: 1590251157604,
+      //     yes: 1,
+      //   },
+      //   {
+      //     name: 'neil',
+      //     date: 1590251157604,
+      //     yes: 0,
+      //   },
 
-        {
-          name: 'qi',
-          date: 1590251157604,
-          yes: 1,
-        },
-        {
-          name: 'neil',
-          date: 1590251157604,
-          yes: 1,
-        },
-        {
-          name: 'qi',
-          date: 1590251157604,
-          yes: 1,
-        },
-      ],
+      //   {
+      //     name: 'qi',
+      //     date: 1590251157604,
+      //     yes: 1,
+      //   },
+      //   {
+      //     name: 'neil',
+      //     date: 1590251157604,
+      //     yes: 1,
+      //   },
+      //   {
+      //     name: 'qi',
+      //     date: 1590251157604,
+      //     yes: 1,
+      //   },
+      // ],
+      exercise: [],
     };
   }
 
@@ -72,7 +73,7 @@ class App extends Component {
   }
 
   renderTable(name) {
-    let data = this.state.mockData.filter((item) => item.name === name);
+    let data = this.state.exercise.filter((item) => item.name === name);
 
     return data.map((info, index) => {
       const { date, yes } = info;
@@ -100,7 +101,7 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          <h2>Welcome to Qi and Neil's Habit Tracker</h2>
+          <h2>Welcome to Qi and Neil's Exercise Tracker</h2>
         </div>
         <div className="dashboard">
           <div className="left">
